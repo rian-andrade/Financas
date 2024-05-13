@@ -49,12 +49,12 @@ public class Menu {
                 case 3:
                     if (!usuarioAutenticado()) {
                         System.out.println("Volte sempre :)");
-                        return; // Encerra imediatamente se não houver usuário autenticado
+                        return;
                     } else {
                         System.out.println("Logout realizado com sucesso");
-                        logout(); // Realiza logout antes de sair
+                        logout();
                         System.out.println("Volte sempre :)");
-                        return; // Encerra imediatamente após o logout
+                        return;
                     }
                 default:
                     System.out.println("Digite uma opção válida");

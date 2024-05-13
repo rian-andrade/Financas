@@ -14,7 +14,6 @@ public abstract class Transacoes {
     private String descricao;
     private String statusTransacao;
 
-    // Construtor
     public Transacoes(LocalDate data, double valor, String categoria, String descricao, String statusTransacao) {
         this.idTransacao = proximoIdTransacao++;
         this.data = data;
