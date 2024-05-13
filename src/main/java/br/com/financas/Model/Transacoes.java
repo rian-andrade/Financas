@@ -68,8 +68,6 @@ public abstract class Transacoes {
         this.statusTransacao = statusTransacao;
     }
 
-    public abstract void processar();
-
     public void exibirInformacoes() {
         System.out.println("ID: " + idTransacao);
         System.out.println("Data: " + data.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
@@ -84,7 +82,7 @@ public abstract class Transacoes {
         exibirInformacoes();
     }
 
-    public static void registrarTransacaoManual() {
+    public static Transacoes registrarTransacaoManual() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Informe a data da transação (formato: dd-mm-aaaa):");
@@ -104,12 +102,13 @@ public abstract class Transacoes {
         System.out.println("Informe o status da transação:");
         String status = scanner.nextLine();
 
-        Transacoes novaTransacao = new Transacoes(data, valor, categoria, descricao, status) {
-            @Override
-            public void processar() {
-            }
-        };
+        Transacoes novaTransacao = criarTransacao(data, valor, categoria, descricao, status);
 
         novaTransacao.registrar();
+
+        return novaTransacao;
     }
-}
+    private static Transacoes criarTransacao(LocalDate data, double valor, String categoria, String descricao, String status) {
+        return new Transacoes(data, valor, categoria, descricao, status) {};
+    }
+    }
